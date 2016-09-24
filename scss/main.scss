@@ -1,0 +1,331 @@
+@import "theme_gray.scss";
+
+$nav-height: 60px;
+$height-image:1000px;
+$text-size: 26px;
+$title-size: $text-size + 10;
+$subtitle-size: $title-size - 5;
+$subtitle-height: $subtitle-size + 2;
+$title-height: $title-size + 6;
+$text-height: $text-size + 6;
+$button-text: 26px;
+$name-size: 140px;
+
+@font-face {
+    font-family: 'Linux';
+    src: url('../fonts/linux.ttf');
+}
+
+@mixin text($size, $line, $weight, $family) {
+    font-family: $family;
+    font-weight: $weight;    
+    font-size: $size;
+    line-height: $line;     
+}
+
+@mixin shadow($color) {
+    -moz-box-shadow: 10px 0px 10px $color;
+    -webkit-box-shadow: 10px 0px 10px $color;
+    box-shadow: 10px 0px 10px $color;
+}
+
+@mixin radius($value) {
+    -moz-border-radius: $value;
+    -webkit-border-radius: $value;
+    border-radius: $value;
+}
+
+/*------ ------ ------ ------ SECTIONS ------ ------ ------ ------*/
+
+.q-and-a {
+    font-size: 16px;
+    i {        
+        color: $dark-violet;     
+    }
+    .question {
+        font-weight: bold;
+        margin-bottom: 0;
+    } 
+    .antwort {
+        
+    }
+} 
+
+.section {
+    position: relative;
+    z-index: 5;    
+    padding: 0;
+    padding-top: $nav-height;
+    padding-bottom: $nav-height;
+    color: $dark-grey;    
+    min-height: 200px;
+    h2 {       
+        @include text($title-size, $title-size, bold, monospace); 
+        text-transform: uppercase;
+    }
+    h2::first-letter {
+        font-size: 150%;
+    }
+    p, .text {       
+       @include text($text-size, $text-height, normal, 'Linux'); 
+    }
+    i {
+        font-size: $text-size;
+        line-height: $text-height;
+        color: $normal-grey;
+    }
+    h3 {
+        @include text($subtitle-size, $subtitle-height, bold, monospace); 
+    }
+}
+
+.section-one { 
+    @extend .section;    
+    background-color: $back;
+}
+
+.section-two {
+    @extend .section;
+    background-color: $back;
+}
+
+#contact {
+    p {    
+        i, a {
+            color: $normal-grey;
+            font-size: 30px;
+            text-decoration: none;
+        }
+    }
+}
+
+#graduation {
+    p {
+        margin-top: 30px;
+    }
+}
+
+.text{
+    padding: auto 20px auto 20px;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1); 
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1); 
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1);   
+}
+
+.text:hover {
+    padding-left: 50px;
+    @include shadow($dark-grey);
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.01);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.01);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.01);
+    transition: all 200ms ease-in;
+    transform: scale(1.01);
+}
+
+/*------ ------ ------ ------ NAVBAR ------ ------ ------ ------*/
+
+.navbar-default {
+    @include text(20px, 22px, bold, 'Linux');   
+    
+    .navbar-header {
+        .navbar-brand {
+            @include text($text-size, $text-height, bold, 'Linux');
+            color: $light-violet;
+            &:hover, &:active {
+                color: $dark-violet;
+            }
+        }
+    }
+    
+    .navbar-nav {        
+        li {
+            a {
+                color: #777;
+                &:hover, &:focus {
+                    color: $light-violet;
+                }
+            }
+        }
+
+        .active {
+            a, a:active, a:hover {
+                color: $light-violet;
+                background-color: #E7E7E7;
+            }
+        }
+    }
+}
+
+#myNavbar {
+    ul {
+        li {
+            a {
+                &:before {
+                    content: '|';
+                }
+            }
+        }
+    }
+}
+
+footer {
+    margin-bottom: 0;
+    background-color: $light-grey;
+    color: $dark-grey;
+    padding: 6px;
+    @include text($text-size, $text-size, lighter, 'Linux');
+}
+
+/*------ ------ ------ ------ Image panel ------ ------ ------ ------*/
+.image {  
+    background-image: url('../images/back.jpg');
+    width: 100%;
+    height: $height-image;
+}
+
+#names {
+    @include text($name-size, $name-size, normal, 'Linux');     
+    color: #fff;
+    margin-top: 300px;
+    cursor: pointer;    
+    border-bottom: 1px solid #fff;
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
+}
+
+#nick, #real-name {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+#overlay {
+    position: absolute;    
+    right: 0;
+    left: 0;
+}
+
+/*------ ------ ------ ------ Buttons ------ ------ ------ ------*/
+.buttons {
+    margin-top: 300px;
+}
+
+.btn {
+    outline: none !important;
+}
+
+.button {
+    border: 3px solid #fff;
+    @include radius(10px);
+    color: #fff;
+    font-size: 24px;
+    background-color: transparent;
+    padding: 16px;
+    @include text($button-text, $button-text, normal, 'Linux'); 
+    &:hover {
+        background-color: $hover-grey;
+        color: #fff;       
+    }
+    .active, &:active, &:focus {
+        background-color: $active-grey;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }    
+}
+
+/*------ ------ ------ ------ media ------ ------ ------ ------*/
+@media screen and (max-width: 1200px) {
+    $diff: 3;
+    .section {        
+        padding: $nav-height/2;              
+        h2 {       
+            font-size: $title-size - $diff;
+            line-height: $title-size - $diff;
+        }
+        h2::first-letter {
+            font-size: 150%;
+        }
+        p, .text {       
+           font-size: $text-size - $diff;
+           line-height: $text-height - $diff;
+        }
+        i {
+            font-size: $text-size - $diff;
+            line-height: $text-height - $diff;
+        }
+        h3 {
+            font-size: $subtitle-size - $diff;
+            line-height: line $subtitle-height - $diff;
+        }        
+    }   
+    footer {
+       font-size: $text-size - $diff;
+       line-height: $text-size - $diff;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    $diff: 6;
+    .section {       
+        padding: $nav-height/3;  
+        h2 {       
+            font-size: $title-size - $diff;
+            line-height: $title-size - $diff;
+        }
+        h2::first-letter {
+            font-size: 150%;
+        }
+        p, .text {       
+            font-size: $text-size - $diff;
+            line-height: $text-height - $diff;
+        }
+        i {
+            font-size: $text-size - $diff;
+            line-height: $text-height - $diff;
+        }
+        h3 {
+            font-size: $subtitle-size - $diff;
+            line-height: line $subtitle-height - $diff;
+        }      
+    }
+    footer {
+        font-size: $text-size - $diff;
+        line-height: $text-size - $diff;
+    }
+}
+
+@media screen and (max-width: 688px) {
+    .buttons {
+        visibility: hidden;
+    }
+} 
+
+@media screen and (max-width: 1200px) {
+    #names {
+        font-size: $name-size - 20;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #names {
+        font-size: $name-size - 40;
+    }
+}
+
+@media screen and (max-width: 738px) {
+    #names {
+        font-size: $name-size - 60;
+    }
+}

@@ -10,7 +10,6 @@ $(document).ready(function main(){
 
         function setPositionTop(newPosition){
             sectionPositionTop = newPosition;
-            console.log("RESIZED! " + sectionPositionTop);
         }
         /**
          * This function creates an overlaing of div#image. 

@@ -36,7 +36,6 @@ $name-size: 140px;
 }
 
 /*------ ------ ------ ------ SECTIONS ------ ------ ------ ------*/
-
 .q-and-a {
     font-size: 16px;
     i {        
@@ -188,6 +187,10 @@ footer {
 /*------ ------ ------ ------ Image panel ------ ------ ------ ------*/
 .image {  
     background-image: url('../images/back.jpg');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-attachment: fixed;
+    position: static;
     width: 100%;
     height: $height-image;
 }
@@ -195,7 +198,7 @@ footer {
 #names {
     @include text($name-size, $name-size, normal, 'Linux');     
     color: #fff;
-    margin-top: 300px;
+    margin-top: 30%;
     cursor: pointer;    
     border-bottom: 1px solid #fff;
     -webkit-user-select: none;  
@@ -214,11 +217,15 @@ footer {
     position: absolute;    
     right: 0;
     left: 0;
+    background-color: $active-grey;
 }
 
+figure {
+    background-color: $active-grey;
+}
 /*------ ------ ------ ------ Buttons ------ ------ ------ ------*/
 .buttons {
-    margin-top: 300px;
+    margin-top: 30%;
 }
 
 .btn {
